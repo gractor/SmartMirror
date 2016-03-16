@@ -4,11 +4,7 @@ var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 
 // Report crashes to our server.
-require('crash-reporter').start();
-
-const crashReporter = require('electron').crashReporter;
-crashReporter.start();
-console.log(crashReporter.getLastCrashReport())
+require('crashreporter');
 
 // Prevent the computer from going to sleep
 const powerSaveBlocker = require('electron').powerSaveBlocker;
