@@ -55,7 +55,7 @@
       })
 
       // Hue communication
-      HueService.init();
+      //HueService.init();
 
       var defaultView = function() {
         console.debug("Ok, going to default view...");
@@ -65,9 +65,9 @@
       // List commands
       AnnyangService.addCommand(command.whatcanisay, function() {
         console.debug("Here is a list of commands...");
-        if(responsiveVoice.voiceSupport()) {
-          responsiveVoice.speak(command.info,command.voice);
-        }
+        //if(responsiveVoice.voiceSupport()) {
+        //  responsiveVoice.speak(command.info,command.voice);
+        //}
         console.log(AnnyangService.commands);
         $scope.focus = "commands";
 
@@ -77,18 +77,18 @@
       AnnyangService.addCommand(command.home, defaultView);
 
       // Hide everything and "sleep"
-      AnnyangService.addCommand(command.sleep, function() {
-        console.debug("Ok, going to sleep...");
-        $scope.focus = "sleep";
-      });
+      //AnnyangService.addCommand(command.sleep, function() {
+      //  console.debug("Ok, going to sleep...");
+      //  $scope.focus = "sleep";
+      //});
 
       // Go back to default view
       AnnyangService.addCommand(command.wake, defaultView);
 
-      AnnyangService.addCommand(command.debug, function() {
-        console.debug("Boop Boop. Showing debug info...");
-        $scope.debug = true;
-      });
+      //AnnyangService.addCommand(command.debug, function() {
+      //  console.debug("Boop Boop. Showing debug info...");
+      //  $scope.debug = true;
+      //});
 
       AnnyangService.addCommand(command.map, function() {
         console.debug("Going on an adventure?");
@@ -124,18 +124,18 @@
       });
 
       // Change name
-      AnnyangService.addCommand(command.name, function(name) {
-        console.debug("Hi", name, "nice to meet you");
-        $scope.user.name = name;
-      });
+      //AnnyangService.addCommand(command.name, function(name) {
+      //  console.debug("Hi", name, "nice to meet you");
+      //  $scope.user.name = name;
+      //});
 
-      AnnyangService.addCommand(command.task, function(task) {
-        console.debug("I'll remind you to", task);
-      });
+      //AnnyangService.addCommand(command.task, function(task) {
+      //  console.debug("I'll remind you to", task);
+      //});
 
-      AnnyangService.addCommand(command.reminder, function() {
-        console.debug("Clearing reminders");
-      });
+      //AnnyangService.addCommand(command.reminder, function() {
+      //  console.debug("Clearing reminders");
+      //});
 
       // Clear log of commands
       AnnyangService.addCommand(command.clear, function(task) {
@@ -150,31 +150,31 @@
       });
 
       // Turn lights off
-      AnnyangService.addCommand(command.light, function(state, action) {
-        HueService.performUpdate(state + " " + action);
-      });
+      //AnnyangService.addCommand(command.light, function(state, action) {
+      //  HueService.performUpdate(state + " " + action);
+      //});
 
 
-      AnnyangService.addCommand(command.musicplay, function(state, action) {
+      //AnnyangService.addCommand(command.musicplay, function(state, action) {
         // // stream track id 293
-        $scope.musicplay.play();
-      });
+      //  $scope.musicplay.play();
+      //});
 
-      AnnyangService.addCommand(command.musicstop, function(state, action) {
-        $scope.musicplay.pause();
-      });
+      //AnnyangService.addCommand(command.musicstop, function(state, action) {
+      //  $scope.musicplay.pause();
+      //});
 
-      AnnyangService.addCommand(command.playyoutube, function(term) {
-
-        YoutubeService.getYoutube(term,'video').then(function(){
-          if(term){
-            var videoId = YoutubeService.getVideoId()
-            $scope.focus = "youtube";
-            $scope.youtubeurl = "http://www.youtube.com/embed/" + videoId + "?autoplay=1&enablejsapi=1&version=3&playerapiid=ytplayer"
-            $scope.currentYoutubeUrl = $sce.trustAsResourceUrl($scope.youtubeurl);
-          }
-        });
-      });
+      //AnnyangService.addCommand(command.playyoutube, function(term) {
+      //
+      //  YoutubeService.getYoutube(term,'video').then(function(){
+      //    if(term){
+      //      var videoId = YoutubeService.getVideoId()
+      //      $scope.focus = "youtube";
+      //      $scope.youtubeurl = "http://www.youtube.com/embed/" + videoId + "?autoplay=1&enablejsapi=1&version=3&playerapiid=ytplayer"
+      //      $scope.currentYoutubeUrl = $sce.trustAsResourceUrl($scope.youtubeurl);
+      //    }
+      //  });
+      //});
 
       AnnyangService.addCommand(command.ytbplaylist, function(term) {
 
@@ -277,17 +277,17 @@
 
       //사용한가능한질문 엔터
       if($event.keyCode == 13) {
-        if(responsiveVoice.voiceSupport()) {
-          responsiveVoice.speak(command.info,command.voice);
-        }
+        //if(responsiveVoice.voiceSupport()) {
+        //  responsiveVoice.speak(command.info,command.voice);
+        //}
         $scope.focus = "commands";
       }
 
       // 클리어 .
       if($event.keyCode == 110) {
-        if(responsiveVoice.voiceSupport()) {
-          responsiveVoice.speak("결과를 제거합니다",command.voice);
-        }
+        //if(responsiveVoice.voiceSupport()) {
+        //  responsiveVoice.speak("결과를 제거합니다",command.voice);
+        //}
         $scope.focus = "clear";
       }
 
