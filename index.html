@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js" charset="utf-8"></script>
-    <!-- responsivevoice.js -->
+    <!-- responsivevoice.js -->fifi
     <!--<script src="http://code.responsivevoice.org/responsivevoice.js"></script>-->
 
     <!-- App -->
@@ -31,6 +31,15 @@
     <!-- Styles and Resources -->
     <link rel="shortcut icon" href="favicon.ico" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800,700' rel='stylesheet' type='text/css'>
+
+    <script>
+      var io = require('socket.io-client')('http://localhost:9005');
+      var socket = io();
+      socket.on('message', function(msg){
+        alert(msg);
+      });
+    </script>
+
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body ng-controller="MirrorCtrl as commands" ng-keydown="keypress($event)">

@@ -54,7 +54,12 @@ app.on('ready', function() {
   if(process.argv[2] == "dev"){
     mainWindow.webContents.openDevTools();
   }
+  mainWindow.webContents.openDevTools();
 
+  // receiver msg!!
+  var path         = require('path');
+  var SocketServerHandler = require('./js/svSocketServerHandler.js');
+  SocketServerHandler.initialize();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {

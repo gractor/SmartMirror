@@ -1,0 +1,7 @@
+message MCEmail {
+  required string title = 1;
+  required string content = 2;
+  required string receiver = 3;
+  optional string bcc = 4;
+  optional string cc = 5;
+}
