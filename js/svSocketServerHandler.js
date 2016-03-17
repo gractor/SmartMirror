@@ -21,6 +21,10 @@ http.listen(9005, function(){
   console.log('listening on *:9005');
 });
 
+io.sockets.emit('message','an event sent to all connected clients');
+io.emit('message','an event sent to all connected clients');
+
+
 module.exports.initialize = function(){
   socketServer = net.createServer(function(connection){
     connection.on('end', function(){
