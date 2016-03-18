@@ -260,7 +260,7 @@
         $scope.complement = content.hello.content;
         $scope.msg = 1;
       }
-
+      $scope.$apply();
     });
 
     $scope.keypress = function($event) {
