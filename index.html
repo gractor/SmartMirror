@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js" charset="utf-8"></script>
-    <!-- responsivevoice.js -->fifi
+    <!-- responsivevoice.js -->
     <!--<script src="http://code.responsivevoice.org/responsivevoice.js"></script>-->
 
     <!-- App -->
@@ -33,20 +33,10 @@
     <link rel="shortcut icon" href="favicon.ico" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800,700' rel='stylesheet' type='text/css'>
 
-    <script>
-      var io = require('socket.io-client')('http://127.0.0.1:9005');
-      console.log(io)
-      io.on('connected', function(data){
-        console.log(data)
-      });
-    </script>
-
     <link rel="stylesheet" href="css/main.css" />
   </head>
-  <body ng-controller="MirrorCtrl as commands" ng-keydown="keypress($event)">
+  <body ng-controller="MirrorCtrl as commands" ng-keydown="keypress($event)" id="MainWrap">
     <div class="top">
-      <p>last key: {{lastKey}}</p>
-
       <div class="top-left">
         <div class="date grey">{{date | date : 'EEEE, MMMM d yyyy'}}</div>
         <div class="time">{{date | date : 'hh:mm a'}}</div>
@@ -70,6 +60,8 @@
     <div class="container">
       <div class="middle-center">
         <h1>{{complement}}</h1>
+        <img ng-show="msg==1" src="siren.gif">
+
         <h3 ng-show="!(user.name === undefined)">{{user.name}}</h3>
         <!-- <div class="listening" ng-show="listening">Ready: {{focus}}</div> -->
         <div class="contents-box map animate-grow" ng-show="focus == 'map'">
@@ -142,5 +134,9 @@
     </div>
     <!-- Sleep cover -->
     <div ng-show="focus == 'sleep'" class="sleep-cover fade"></div>
+
+    <script>
+    </script>
+
   </body>
 </html>

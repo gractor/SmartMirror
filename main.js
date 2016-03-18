@@ -54,7 +54,7 @@ app.on('ready', function() {
   if(process.argv[2] == "dev"){
     mainWindow.webContents.openDevTools();
   }
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   var SocketServerHandler = require('./js/svSocketServerHandler.js');
   SocketServerHandler.initialize();
