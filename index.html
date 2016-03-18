@@ -26,6 +26,7 @@
     <script src="js/hue-service.js"></script>
     <script src="js/geolocation-service.js"></script>
     <script src="js/controller.js"></script>
+    <!-- <script src="js/socket.io.js"></script> -->
     <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
 
     <!-- Styles and Resources -->
@@ -33,10 +34,10 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800,700' rel='stylesheet' type='text/css'>
 
     <script>
-      var io = require('socket.io-client')('http://localhost:9005');
-      var socket = io();
-      socket.on('message', function(msg){
-        alert(msg);
+      var io = require('socket.io-client')('http://127.0.0.1:9005');
+      console.log(io)
+      io.on('connected', function(data){
+        console.log(data)
       });
     </script>
 

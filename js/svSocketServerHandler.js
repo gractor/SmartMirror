@@ -9,20 +9,13 @@ var log  = require('printit')({
   prefix: 'utils:socketServerHandler'
 });
 
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-
+var io = require('socket.io')();
 io.on('connection', function(socket){
-  console.log('a user connected');
+  socket.emit('connected', {
+    hello: 'world'
+  })
 });
-
-http.listen(9005, function(){
-  console.log('listening on *:9005');
-});
-
-io.sockets.emit('message','an event sent to all connected clients');
-io.emit('message','an event sent to all connected clients');
+io.listen(9005);
 
 
 module.exports.initialize = function(){

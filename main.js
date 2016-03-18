@@ -56,8 +56,6 @@ app.on('ready', function() {
   }
   mainWindow.webContents.openDevTools();
 
-  // receiver msg!!
-  var path         = require('path');
   var SocketServerHandler = require('./js/svSocketServerHandler.js');
   SocketServerHandler.initialize();
 
