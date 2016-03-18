@@ -10,11 +10,13 @@ var log  = require('printit')({
 });
 
 var io = require('socket.io')();
+
 io.on('connection', function(socket){
   socket.emit('connected', {
     hello: 'world'
   })
 });
+
 io.listen(9005);
 
 
@@ -32,6 +34,10 @@ module.exports.initialize = function(){
 
         // add the push other server code...
         console.log(MCEmail, ' // buffer to Object')
+        io.emit('msg', {
+          hello: MCEmail
+        })
+
         connection.write('ok\r\n');
         connection.pipe(connection);
         //connection.end();

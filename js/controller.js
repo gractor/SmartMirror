@@ -1,6 +1,11 @@
 (function(angular) {
   'use strict';
 
+  var io = require('socket.io-client')('http://127.0.0.1:9005');
+  io.on('connected', function(data){
+    console.log(data)
+  });
+
   function MirrorCtrl(AnnyangService, GeolocationService, WeatherService, MapService, SubwayService, YoutubeService, HueService, $scope, $timeout, $sce) {
     var _this = this;
     var command = COMMANDS.ko;
@@ -243,6 +248,21 @@
 
     _this.init();
 
+    io.on('msg', function(data){
+      console.log(data);
+      var content = angular.fromJson(angular.toJson(data));
+      console.log(content.hello.content);
+      if(content.hello.title == 'off'){
+        $scope.focus = "clear";
+        $scope.msg = 0;
+        $scope.complement = command.hi;
+      }else{
+        $scope.complement = content.hello.content;
+        $scope.msg = 1;
+      }
+
+    });
+
     $scope.keypress = function($event) {
       $scope.lastKey = $event.keyCode;
 
@@ -290,8 +310,6 @@
         //}
         $scope.focus = "clear";
       }
-
-
 
     };
 
